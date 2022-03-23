@@ -1,0 +1,206 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: auto;
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+  font-size: 1.1rem;
+}
+
+.navBar {
+  top: 0;
+  position: sticky;
+  height: 3rem;
+  max-width: 1440px;
+  margin: auto;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(207, 26%, 17%);
+}
+
+.navBarFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBarLogo {
+  padding: 0.4rem 0.6rem;
+  margin: 0rem 0.7rem;
+  display: none;
+}
+
+.navBarElement {
+  padding: 0.2rem 0.6rem;
+  margin: 0rem 0.7rem;
+  border-style: solid;
+  border-width: thin;
+  border-color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  background-color: hsl(209, 23%, 22%);
+  text-decoration: none;
+}
+
+.navBarElement:hover {
+  color: hsl(207, 26%, 17%);
+  background-color: hsl(0, 0%, 100%);
+}
+
+.mainLayout {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.filterListLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  max-width: 1400px;
+  width: 85%;
+}
+
+.filtersTextSize {
+  font-size: 1.1rem;
+}
+
+.controlTimeLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1400px;
+  width: 85%;
+}
+
+.controlsTextSize {
+  font-size: 2.4rem;
+  padding: 0rem 0.4rem;
+}
+
+.controlsTextSize2 {
+  font-size: 2.1rem;
+  padding: 0rem 0.4rem;
+}
+
+.controlsTextSize3 {
+  font-size: 1.8rem;
+  padding: 0rem 0.4rem;
+}
+
+.clockTextSize {
+  font-size: 1.8rem;
+}
+
+.tableControlsSize {
+  min-width: 4.7rem;
+}
+
+.taskListLayout {
+  max-width: 1400px;
+  width: 85%;
+}
+
+.updateListLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.7rem;
+}
+
+.boxItemListLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.groupFieldsListLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.itemFieldsListLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.fieldLabelSize {
+  min-width: 5rem;
+}
+
+.solidBorder {
+  border-style: solid;
+  border-width: thin;
+  border-color: hsl(0, 0%, 100%);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+@media (min-width: 500px) {
+  .controlTimeLayout {
+    flex-direction: row;
+  }
+
+  .boxItemListLayout {
+    flex-direction: row;
+  }
+
+  .itemFieldsListLayout {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (min-width: 800px) {
+  .navBar {
+    justify-content: space-between;
+  }
+
+  .navBarLogo {
+    display: inline;
+  }
+
+  .filterListLayout {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .filterListLayout :nth-child(1) {
+    order: 1;
+  }
+
+  .filterListLayout :nth-child(2) {
+    order: 3;
+  }
+
+  .filterListLayout :nth-child(3) {
+    order: 2;
+  }
+}
+
+@media (min-width: 1075px) {
+  .updateListLayout {
+    flex-direction: row;
+  }
+}
