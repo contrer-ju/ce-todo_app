@@ -76,6 +76,14 @@ body {
   font-size: 1.1rem;
 }
 
+.checkboxSpaceAround {
+  margin-right: 0.4rem;
+}
+
+.checkboxLabelSpaceAround {
+  padding-right: 1rem;
+}
+
 .controlTimeLayout {
   display: flex;
   flex-direction: column;
@@ -105,8 +113,8 @@ body {
   font-size: 1.8rem;
 }
 
-.tableControlsSize {
-  min-width: 4.7rem;
+.iconsControlsSize {
+  min-width: 5rem;
 }
 
 .taskListLayout {
@@ -143,6 +151,15 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.cellTableLayout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.2rem;
 }
 
 .fieldLabelSize {
@@ -155,6 +172,22 @@ body {
   border-color: hsl(0, 0%, 100%);
   border-radius: 5px;
   padding: 1rem;
+}
+
+.centerText {
+  text-align: center;
+}
+
+.radioButtomsLayout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.disableColor {
+  color: #b4b9bd;
 }
 
 @media (min-width: 500px) {

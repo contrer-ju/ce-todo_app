@@ -1,53 +1,164 @@
-export default function UpdateList() {
+export default function UpdateList({
+  taskList,
+  setTaskList,
+  newTask,
+  setNewTask,
+  newDurationTask,
+  setNewDurationTask,
+  onAddNewTask,
+  updateTask,
+  setUpdateTask,
+  updateTaskID,
+  setUpdateTaskID,
+  updateDurationTask,
+  setUpdateDurationTask,
+  onUpdateTask,
+}) {
   return (
     <div className="updateListLayout">
       <div>
-        <span>Add a new Task</span>
+        <span>Add a new task</span>
         <div className="boxItemListLayout solidBorder">
           <div className="groupFieldsListLayout">
             <div className="itemFieldsListLayout">
               <div className="fieldLabelSize">Task:</div>
               <input
                 className="filtersTextSize"
-                type="search"
-                onChange={(event) => console.log(event.target.value)}
+                value={newTask}
+                type="text"
+                onInput={(event) => setNewTask(event.target.value)}
               />
             </div>
             <div className="itemFieldsListLayout">
               <div className="fieldLabelSize">Duration:</div>
               <input
                 className="filtersTextSize"
-                type="search"
-                onChange={(event) => console.log(event.target.value)}
+                value={newDurationTask}
+                type="time"
+                onInput={(event) => setNewDurationTask(event.target.value)}
               />
+              <div className="radioButtomsLayout">
+                <span>
+                  <input
+                    type="radio"
+                    name="predefinedTime"
+                    onChange={() => setNewDurationTask("00:30")}
+                    checked={newDurationTask === "00:30"}
+                  />
+                  {" 30m"}
+                </span>
+                <span>
+                  <input
+                    type="radio"
+                    name="predefinedTime"
+                    onChange={() => setNewDurationTask("00:45")}
+                    checked={newDurationTask === "00:45"}
+                  />
+                  {" 45m"}
+                </span>
+                <span>
+                  <input
+                    type="radio"
+                    name="predefinedTime"
+                    onChange={() => setNewDurationTask("01:00")}
+                    checked={newDurationTask === "01:00"}
+                  />
+                  {" 60m"}
+                </span>
+              </div>
             </div>
           </div>
-          {/* <i className="controlsTextSize fa fa-plus-square"></i> */}
-          <i className="controlsTextSize fa fa-plus-square-o"></i>
+          <i
+            className="controlsTextSize fa fa-plus-square-o"
+            onClick={() =>
+              onAddNewTask(
+                taskList,
+                setTaskList,
+                newTask,
+                setNewTask,
+                newDurationTask,
+                setNewDurationTask
+              )
+            }
+          ></i>
         </div>
       </div>
       <div>
-        <span>Select a Task to Edit</span>
+        <span>Please select a task to update</span>
         <div className="boxItemListLayout solidBorder">
           <div className="groupFieldsListLayout">
             <div className="itemFieldsListLayout">
               <div className="fieldLabelSize">Task:</div>
               <input
                 className="filtersTextSize"
-                type="search"
-                onChange={(event) => console.log(event.target.value)}
+                type="text"
+                disabled={updateTask === "" && updateDurationTask === ""}
+                value={updateTask}
+                onChange={(event) => setUpdateTask(event.target.value)}
               />
             </div>
             <div className="itemFieldsListLayout">
               <div className="fieldLabelSize">Duration:</div>
               <input
                 className="filtersTextSize"
-                type="search"
-                onChange={(event) => console.log(event.target.value)}
+                type="time"
+                disabled={updateTask === "" && updateDurationTask === ""}
+                value={updateDurationTask}
+                onChange={(event) => setUpdateDurationTask(event.target.value)}
               />
+              <div className="radioButtomsLayout">
+                <span>
+                  <input
+                    type="radio"
+                    name="predefinedUpdateTime"
+                    onChange={() => setUpdateDurationTask("00:30")}
+                    checked={updateDurationTask === "00:30"}
+                    disabled={updateTask === "" && updateDurationTask === ""}
+                  />
+                  {" 30m"}
+                </span>
+                <span>
+                  <input
+                    type="radio"
+                    name="predefinedUpdateTime"
+                    onChange={() => setUpdateDurationTask("00:45")}
+                    checked={updateDurationTask === "00:45"}
+                    disabled={updateTask === "" && updateDurationTask === ""}
+                  />
+                  {" 45m"}
+                </span>
+                <span>
+                  <input
+                    type="radio"
+                    name="predefinedUpdateTime"
+                    onChange={() => setUpdateDurationTask("01:00")}
+                    checked={updateDurationTask === "01:00"}
+                    disabled={updateTask === "" && updateDurationTask === ""}
+                  />
+                  {" 60m"}
+                </span>
+              </div>
             </div>
           </div>
-          <i className="controlsTextSize fa fa-sign-in"></i>
+          <i
+            className={
+              updateTask === "" && updateDurationTask === ""
+                ? "controlsTextSize fa fa-sign-in disableColor"
+                : "controlsTextSize fa fa-sign-in"
+            }
+            onClick={() =>
+              onUpdateTask(
+                taskList,
+                setTaskList,
+                updateTask,
+                setUpdateTask,
+                updateTaskID,
+                setUpdateTaskID,
+                updateDurationTask,
+                setUpdateDurationTask
+              )
+            }
+          ></i>
         </div>
       </div>
     </div>

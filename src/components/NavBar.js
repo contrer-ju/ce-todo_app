@@ -3,8 +3,8 @@ export default function NavBar() {
     <div className="navBar">
       <span className="navBarLogo">Image</span>
       <div className="navBarFlex">
-        <span className="navBarElement">ToDo List</span>
-        <span className="navBarElement">Performance</span>
+        <span className="navBarElement">ToDo App</span>
+        <span className="navBarElement">Dashboard</span>
       </div>
     </div>
   );

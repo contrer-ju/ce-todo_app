@@ -18,9 +18,17 @@ export default function FilterList({ test }) {
         <option value="1">Less than 30 minutes</option>
       </select>
       <div>
-        <input type="checkbox" onChange={() => console.log("Pending")} />
-        <span>Pending</span>
-        <input type="checkbox" onChange={() => console.log("Complete")} />
+        <input
+          className="checkboxSpaceAround"
+          type="checkbox"
+          onChange={() => console.log("Pending")}
+        />
+        <span className="checkboxLabelSpaceAround">Pending</span>
+        <input
+          className="checkboxSpaceAround"
+          type="checkbox"
+          onChange={() => console.log("Complete")}
+        />
         <span>Complete</span>
       </div>
     </div>
