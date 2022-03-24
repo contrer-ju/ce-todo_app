@@ -1,7 +1,6 @@
 export default function onSelectTask(
   updateTask,
   setUpdateTask,
-  updateTaskID,
   setUpdateTaskID,
   updateDurationTask,
   setUpdateDurationTask,

@@ -6,18 +6,22 @@ export default function onIncrementOrderTask(taskList, setTaskList, taskID) {
       const newUpperTask = aTaskList[i].task;
       const newUpperDuration = aTaskList[i].duration;
       const newUpperStatus = aTaskList[i].status;
+      const newUpperDurationTypes = aTaskList[i].durationTypes
 
       const newLowerTask = aTaskList[i - 1].task;
       const newLowerDuration = aTaskList[i - 1].duration;
       const newLowerStatus = aTaskList[i - 1].status;
+      const newLowerDurationTypes = aTaskList[i - 1].durationTypes
 
       aTaskList[i].task = newLowerTask;
       aTaskList[i].duration = newLowerDuration;
       aTaskList[i].status = newLowerStatus;
+      aTaskList[i].durationTypes = newLowerDurationTypes;
 
       aTaskList[i - 1].task = newUpperTask;
       aTaskList[i - 1].duration = newUpperDuration;
       aTaskList[i - 1].status = newUpperStatus;
+      aTaskList[i - 1].durationTypes = newUpperDurationTypes;
 
       setTaskList(aTaskList);
       break;

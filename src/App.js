@@ -14,6 +14,7 @@ import onIncrementOrderTask from "./handlers/onIncrementOrderTask";
 import onDecrementOrderTask from "./handlers/onDecrementOrderTask";
 
 import useTaskStates from "./hooks/useTaskStates";
+import useFiltersStates from "./hooks/useFiltersStates";
 
 function App() {
   const {
@@ -30,6 +31,14 @@ function App() {
     updateDurationTask,
     setUpdateDurationTask,
   } = useTaskStates();
+  const {
+    taskFilter,
+    setLowerCaseOfTaskFilter,
+    statusFilter,
+    setStatusFilter,
+    durationFilter,
+    setDurationFilter,
+  } = useFiltersStates();
 
   return (
     <BrowserRouter>
@@ -39,7 +48,15 @@ function App() {
           path="/"
           element={
             <div className="mainLayout">
-              <FilterList />
+              <FilterList
+                {...{
+                  setLowerCaseOfTaskFilter,
+                  statusFilter,
+                  setStatusFilter,
+                  durationFilter,
+                  setDurationFilter,
+                }}
+              />
               <ControlTime />
               <TaskList
                 {...{
@@ -55,6 +72,9 @@ function App() {
                   setUpdateDurationTask,
                   onIncrementOrderTask,
                   onDecrementOrderTask,
+                  taskFilter,
+                  statusFilter,
+                  durationFilter,
                 }}
               />
               <UpdateList

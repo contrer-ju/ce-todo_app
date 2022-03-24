@@ -11,7 +11,21 @@ export default function TaskList({
   setUpdateDurationTask,
   onIncrementOrderTask,
   onDecrementOrderTask,
+  taskFilter,
+  statusFilter,
+  durationFilter,
 }) {
+  let filterTaskList = taskList
+    .filter((filterTasksByTask) =>
+      filterTasksByTask.task.toLowerCase().includes(taskFilter)
+    )
+    .filter((filterTasksByStatus) =>
+      filterTasksByStatus.status.includes(statusFilter)
+    )
+    .filter((filterTasksByDuration) =>
+      filterTasksByDuration.durationTypes.includes(durationFilter)
+    );
+
   return (
     <div className="taskListLayout table-responsive">
       <table className="table">
@@ -28,12 +42,20 @@ export default function TaskList({
           {taskList.length === 0 && (
             <tr>
               <td className="centerText" colSpan="5">
-                No Items on List
+                No items on the list, please add some.
+              </td>
+            </tr>
+          )}
+          {taskList.length !== 0 && filterTaskList.length === 0 && (
+            <tr>
+              <td className="centerText" colSpan="5">
+                There aren't matches with the filter criteria.
               </td>
             </tr>
           )}
           {taskList.length !== 0 &&
-            taskList.map((taskItem) => (
+            filterTaskList.length !== 0 &&
+            filterTaskList.map((taskItem) => (
               <tr key={taskItem.id}>
                 <th scope="row">{taskItem.order}</th>
                 <td>{taskItem.task}</td>
@@ -58,7 +80,6 @@ export default function TaskList({
                         onSelectTask(
                           updateTask,
                           setUpdateTask,
-                          updateTaskID,
                           setUpdateTaskID,
                           updateDurationTask,
                           setUpdateDurationTask,

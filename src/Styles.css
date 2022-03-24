@@ -190,6 +190,10 @@ body {
   color: #b4b9bd;
 }
 
+.paddingSelectInput {
+  padding: 0.2rem;
+}
+
 @media (min-width: 500px) {
   .controlTimeLayout {
     flex-direction: row;
@@ -217,18 +221,6 @@ body {
   .filterListLayout {
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .filterListLayout :nth-child(1) {
-    order: 1;
-  }
-
-  .filterListLayout :nth-child(2) {
-    order: 3;
-  }
-
-  .filterListLayout :nth-child(3) {
-    order: 2;
   }
 }
 

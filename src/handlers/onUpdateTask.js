@@ -14,11 +14,17 @@ export default function onUpdateTask(
 
     if ((hours === 2 && minutes === 0) || hours < 2) {
       let aTaskList = JSON.parse(JSON.stringify(taskList));
+      let durationType = "";
+      if (hours === 0 && minutes <= 30) durationType = "short";
+      if ((hours === 0 && minutes > 30) || (hours === 1 && minutes === 0))
+        durationType = "medium";
+      if ((hours === 1 && minutes > 0) || hours > 1) durationType = "long";
 
       for (let i = 0; i < taskList.length; i++) {
         if (taskList[i].id === updateTaskID) {
           aTaskList[i].task = updateTask;
           aTaskList[i].duration = updateDurationTask;
+          aTaskList[i].durationTypes = durationType;
           break;
         }
       }
