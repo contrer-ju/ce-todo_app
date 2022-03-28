@@ -1,4 +1,4 @@
-export default function onDecrementOrderTask(taskList, setTaskList, taskID) {
+export default function onDecrementTaskOrder(taskList, setTaskList, taskID) {
   let aTaskList = JSON.parse(JSON.stringify(taskList));
 
   for (let i = 0; i < taskList.length; i++) {

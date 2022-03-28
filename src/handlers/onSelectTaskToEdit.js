@@ -1,4 +1,4 @@
-export default function onSelectTask(
+export default function onSelectTaskToEdit(
   updateTask,
   setUpdateTask,
   setUpdateTaskID,

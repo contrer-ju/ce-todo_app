@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 
-import ControlTime from "./components/ControlTime";
+import RunningTask from "./components/RunningTask";
 import FilterList from "./components/FilterList";
 import NavBar from "./components/NavBar";
 import TaskList from "./components/TaskList";
@@ -8,13 +9,17 @@ import UpdateList from "./components/UpdateList";
 
 import onAddNewTask from "./handlers/onAddNewTask";
 import onDeleteTask from "./handlers/onDeleteTask";
-import onSelectTask from "./handlers/onSelectTask";
+import onSelectTaskToEdit from "./handlers/onSelectTaskToEdit";
 import onUpdateTask from "./handlers/onUpdateTask";
-import onIncrementOrderTask from "./handlers/onIncrementOrderTask";
-import onDecrementOrderTask from "./handlers/onDecrementOrderTask";
+import onIncrementTaskOrder from "./handlers/onIncrementTaskOrder";
+import onDecrementTaskOrder from "./handlers/onDecrementTaskOrder";
+import onSelectTaskToDo from "./handlers/onSelectTaskToDo";
+import onCalculateSecondsDifference from "./handlers/onCalculateSecondsDifference";
+import onGenerateRandomdata from "./handlers/onGenerateRandomdata";
 
 import useTaskStates from "./hooks/useTaskStates";
 import useFiltersStates from "./hooks/useFiltersStates";
+import useTimeStates from "./hooks/useTimeStates";
 
 function App() {
   const {
@@ -30,6 +35,10 @@ function App() {
     setUpdateTaskID,
     updateDurationTask,
     setUpdateDurationTask,
+    taskToDo,
+    setTaskToDo,
+    taskToDoDuration,
+    setTaskToDoDuration,
   } = useTaskStates();
   const {
     taskFilter,
@@ -40,6 +49,58 @@ function App() {
     setDurationFilter,
   } = useFiltersStates();
 
+  const {
+    secondsCounter,
+    setSecondsCounter,
+    minutesCounter,
+    setMinutesCounter,
+    hoursCounter,
+    setHoursCounter,
+    setStartCountdown,
+    playSelected,
+    setPlaySelected,
+    pauseSelected,
+    setPauseSelected,
+    finishCountdown,
+    setFinishCountdown,
+  } = useTimeStates();
+
+  useEffect(() => {
+    if (finishCountdown) {
+      onAddNewTask(
+        taskList,
+        setTaskList,
+        taskToDo,
+        setNewTask,
+        onCalculateSecondsDifference(
+          taskToDoDuration,
+          hoursCounter,
+          minutesCounter,
+          secondsCounter
+        ),
+        setNewDurationTask,
+        "Completed"
+      );
+      setTaskToDo("");
+      setTaskToDoDuration("00:00");
+      setFinishCountdown(false);
+    }
+  }, [
+    finishCountdown,
+    hoursCounter,
+    minutesCounter,
+    secondsCounter,
+    setFinishCountdown,
+    setNewDurationTask,
+    setNewTask,
+    setTaskList,
+    setTaskToDo,
+    setTaskToDoDuration,
+    taskList,
+    taskToDo,
+    taskToDoDuration,
+  ]);
+
   return (
     <BrowserRouter>
       <NavBar />
@@ -48,33 +109,68 @@ function App() {
           path="/"
           element={
             <div className="mainLayout">
-              <FilterList
-                {...{
-                  setLowerCaseOfTaskFilter,
-                  statusFilter,
-                  setStatusFilter,
-                  durationFilter,
-                  setDurationFilter,
-                }}
-              />
-              <ControlTime />
+              <div className="topSectionLayout">
+                <FilterList
+                  {...{
+                    setLowerCaseOfTaskFilter,
+                    statusFilter,
+                    setStatusFilter,
+                    durationFilter,
+                    setDurationFilter,
+                  }}
+                />
+                <RunningTask
+                  {...{
+                    taskToDo,
+                    setTaskToDo,
+                    taskToDoDuration,
+                    setTaskToDoDuration,
+                    secondsCounter,
+                    setSecondsCounter,
+                    minutesCounter,
+                    setMinutesCounter,
+                    hoursCounter,
+                    setHoursCounter,
+                    setStartCountdown,
+                    playSelected,
+                    setPlaySelected,
+                    pauseSelected,
+                    setPauseSelected,
+                    onAddNewTask,
+                    taskList,
+                    setTaskList,
+                    setNewTask,
+                    setNewDurationTask,
+                    onCalculateSecondsDifference,
+                  }}
+                />
+              </div>
               <TaskList
                 {...{
                   taskList,
                   setTaskList,
                   onDeleteTask,
-                  onSelectTask,
+                  onSelectTaskToEdit,
                   updateTask,
                   setUpdateTask,
                   updateTaskID,
                   setUpdateTaskID,
                   updateDurationTask,
                   setUpdateDurationTask,
-                  onIncrementOrderTask,
-                  onDecrementOrderTask,
+                  onIncrementTaskOrder,
+                  onDecrementTaskOrder,
                   taskFilter,
                   statusFilter,
                   durationFilter,
+                  onSelectTaskToDo,
+                  taskToDo,
+                  setTaskToDo,
+                  taskToDoDuration,
+                  setTaskToDoDuration,
+                  setSecondsCounter,
+                  setMinutesCounter,
+                  setHoursCounter,
+                  onGenerateRandomdata,
                 }}
               />
               <UpdateList

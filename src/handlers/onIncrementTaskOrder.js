@@ -1,4 +1,4 @@
-export default function onIncrementOrderTask(taskList, setTaskList, taskID) {
+export default function onIncrementTaskOrder(taskList, setTaskList, taskID) {
   let aTaskList = JSON.parse(JSON.stringify(taskList));
 
   for (let i = 0; i < taskList.length; i++) {

@@ -10,7 +10,7 @@ export default function onUpdateTask(
 ) {
   if (updateTask !== "" && updateDurationTask !== "") {
     const hours = Number(updateDurationTask.substring(0, 2));
-    const minutes = Number(updateDurationTask.substring(3));
+    const minutes = Number(updateDurationTask.substring(3,5));
 
     if ((hours === 2 && minutes === 0) || hours < 2) {
       let aTaskList = JSON.parse(JSON.stringify(taskList));

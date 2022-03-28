@@ -1,3 +1,5 @@
+import ReactTooltip from "react-tooltip";
+
 export default function UpdateList({
   taskList,
   setTaskList,
@@ -36,6 +38,7 @@ export default function UpdateList({
                 value={newDurationTask}
                 type="time"
                 onInput={(event) => setNewDurationTask(event.target.value)}
+                step="1"
               />
               <div className="radioButtomsLayout">
                 <span>
@@ -69,7 +72,8 @@ export default function UpdateList({
             </div>
           </div>
           <i
-            className="controlsTextSize fa fa-plus-square-o"
+            data-tip="Add Task"
+            className="controlsTextSize fa fa-plus-square-o cursorPointer"
             onClick={() =>
               onAddNewTask(
                 taskList,
@@ -77,7 +81,8 @@ export default function UpdateList({
                 newTask,
                 setNewTask,
                 newDurationTask,
-                setNewDurationTask
+                setNewDurationTask,
+                "Pending"
               )
             }
           ></i>
@@ -105,6 +110,7 @@ export default function UpdateList({
                 disabled={updateTask === "" && updateDurationTask === ""}
                 value={updateDurationTask}
                 onChange={(event) => setUpdateDurationTask(event.target.value)}
+                step="1"
               />
               <div className="radioButtomsLayout">
                 <span>
@@ -141,10 +147,11 @@ export default function UpdateList({
             </div>
           </div>
           <i
+            data-tip="Update Task"
             className={
               updateTask === "" && updateDurationTask === ""
                 ? "controlsTextSize fa fa-sign-in disableColor"
-                : "controlsTextSize fa fa-sign-in"
+                : "controlsTextSize fa fa-sign-in cursorPointer"
             }
             onClick={() =>
               onUpdateTask(
@@ -161,6 +168,7 @@ export default function UpdateList({
           ></i>
         </div>
       </div>
+      <ReactTooltip place="bottom" effect="solid" />
     </div>
   );
 }

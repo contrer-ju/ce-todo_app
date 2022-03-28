@@ -4,11 +4,12 @@ export default function onAddNewTask(
   newTask,
   setNewTask,
   newDurationTask,
-  setNewDurationTask
+  setNewDurationTask,
+  taskStatus
 ) {
   if (newTask !== "" && newDurationTask !== "") {
     const hours = Number(newDurationTask.substring(0, 2));
-    const minutes = Number(newDurationTask.substring(3));
+    const minutes = Number(newDurationTask.substring(3,5));
 
     if ((hours === 2 && minutes === 0) || hours < 2) {
       let durationType = "";
@@ -24,7 +25,7 @@ export default function onAddNewTask(
         task: newTask,
         duration: newDurationTask,
         durationTypes: durationType,
-        status: "Pending",
+        status: taskStatus,
       });
 
       setNewTask("");

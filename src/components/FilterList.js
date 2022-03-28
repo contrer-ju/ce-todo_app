@@ -6,7 +6,7 @@ export default function FilterList({
   setDurationFilter,
 }) {
   return (
-    <div className="filterListLayout">
+    <div className="filterListLayout solidBorder">
       <input
         className="filtersTextSize"
         type="search"
@@ -20,7 +20,7 @@ export default function FilterList({
       >
         <option value="">Filter by task status</option>
         <option value="Pending">Pending</option>
-        <option value="Complete">Complete</option>
+        <option value="Complete">Completed</option>
       </select>
       <select
         className="filtersTextSize paddingSelectInput"

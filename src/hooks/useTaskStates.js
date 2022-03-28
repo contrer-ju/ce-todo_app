@@ -7,6 +7,8 @@ const useTaskStates = () => {
   const [updateTask, setUpdateTask] = useState("");
   const [updateTaskID, setUpdateTaskID] = useState("");
   const [updateDurationTask, setUpdateDurationTask] = useState("");
+  const [taskToDo, setTaskToDo] = useState("");
+  const [taskToDoDuration, setTaskToDoDuration] = useState("00:00");
 
   return {
     taskList,
@@ -21,6 +23,10 @@ const useTaskStates = () => {
     setUpdateTaskID,
     updateDurationTask,
     setUpdateDurationTask,
+    taskToDo,
+    setTaskToDo,
+    taskToDoDuration,
+    setTaskToDoDuration,
   };
 };
 
