@@ -6,6 +6,7 @@ import FilterList from "./components/FilterList";
 import NavBar from "./components/NavBar";
 import TaskList from "./components/TaskList";
 import UpdateList from "./components/UpdateList";
+import Dashboard from "./components/Dashboard";
 
 import onAddNewTask from "./handlers/onAddNewTask";
 import onDeleteTask from "./handlers/onDeleteTask";
@@ -16,6 +17,8 @@ import onDecrementTaskOrder from "./handlers/onDecrementTaskOrder";
 import onSelectTaskToDo from "./handlers/onSelectTaskToDo";
 import onCalculateSecondsDifference from "./handlers/onCalculateSecondsDifference";
 import onGenerateRandomdata from "./handlers/onGenerateRandomdata";
+import onMappingPieChartData from "./handlers/onMappingPieChartData";
+import onMappingLineChartData from "./handlers/onMappingLineChartData";
 
 import useTaskStates from "./hooks/useTaskStates";
 import useFiltersStates from "./hooks/useFiltersStates";
@@ -56,6 +59,7 @@ function App() {
     setMinutesCounter,
     hoursCounter,
     setHoursCounter,
+    startCountdown,
     setStartCountdown,
     playSelected,
     setPlaySelected,
@@ -189,6 +193,25 @@ function App() {
                   updateDurationTask,
                   setUpdateDurationTask,
                   onUpdateTask,
+                }}
+              />
+            </div>
+          }
+        />
+        <Route
+          path="dashboard"
+          element={
+            <div className="mainLayout">
+              <Dashboard
+                {...{
+                  startCountdown,
+                  setStartCountdown,
+                  setPlaySelected,
+                  setPauseSelected,
+                  taskList,
+                  taskToDo,
+                  onMappingPieChartData,
+                  onMappingLineChartData,
                 }}
               />
             </div>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function NavBar() {
   return (
     <div className="navBar">
@@ -5,8 +7,12 @@ export default function NavBar() {
         <i className="controlsTextSize2 fa fa-check-square"></i>
       </span>
       <div className="navBarFlex">
-        <span className="navBarElement">ToDo App</span>
-        <span className="navBarElement">Dashboard</span>
+        <Link to="/" className="navBarElement">
+          <span>ToDo App</span>
+        </Link>
+        <Link to="/dashboard" className="navBarElement">
+          <span>Dashboard</span>
+        </Link>
       </div>
     </div>
   );

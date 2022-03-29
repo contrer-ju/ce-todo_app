@@ -10,15 +10,29 @@ export default function onUpdateTask(
 ) {
   if (updateTask !== "" && updateDurationTask !== "") {
     const hours = Number(updateDurationTask.substring(0, 2));
-    const minutes = Number(updateDurationTask.substring(3,5));
+    const minutes = Number(updateDurationTask.substring(3, 5));
+    const seconds = Number(updateDurationTask.substring(6));
 
-    if ((hours === 2 && minutes === 0) || hours < 2) {
+    if ((hours === 2 && minutes === 0 && seconds === 0) || hours < 2) {
       let aTaskList = JSON.parse(JSON.stringify(taskList));
       let durationType = "";
-      if (hours === 0 && minutes <= 30) durationType = "short";
-      if ((hours === 0 && minutes > 30) || (hours === 1 && minutes === 0))
+      if (
+        (hours === 0 && minutes < 30) ||
+        (hours === 0 && minutes === 30 && seconds === 0)
+      )
+        durationType = "short";
+      if (
+        (hours === 0 && minutes === 30 && seconds > 0) ||
+        (hours === 0 && minutes > 30) ||
+        (hours === 1 && minutes === 0 && seconds === 0)
+      )
         durationType = "medium";
-      if ((hours === 1 && minutes > 0) || hours > 1) durationType = "long";
+      if (
+        (hours === 1 && minutes === 0 && seconds > 0) ||
+        (hours === 1 && minutes > 0) ||
+        hours > 1
+      )
+        durationType = "long";
 
       for (let i = 0; i < taskList.length; i++) {
         if (taskList[i].id === updateTaskID) {

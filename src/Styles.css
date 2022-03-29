@@ -45,9 +45,11 @@ body {
   border-radius: 5px;
   background-color: hsl(209, 23%, 22%);
   text-decoration: none;
+  color: hsl(0, 0%, 100%);
 }
 
 .navBarElement:hover {
+  text-decoration: none;
   color: hsl(207, 26%, 17%);
   background-color: hsl(0, 0%, 100%);
 }
@@ -226,6 +228,14 @@ body {
   overflow-y: auto;
 }
 
+.dashboardLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
 @media (min-width: 500px) {
   .boxItemListLayout {
     flex-direction: row;
@@ -267,6 +277,10 @@ body {
 
 @media (min-width: 1075px) {
   .updateListLayout {
+    flex-direction: row;
+  }
+
+  .dashboardLayout {
     flex-direction: row;
   }
 }

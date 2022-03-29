@@ -55,6 +55,7 @@ const useTimeStates = () => {
     setMinutesCounter,
     hoursCounter,
     setHoursCounter,
+    startCountdown,
     setStartCountdown,
     playSelected,
     setPlaySelected,
